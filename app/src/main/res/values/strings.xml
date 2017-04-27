@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">GeoQuiz</string>
+    <string name="question_text">Kyiv is the capital of Ukraine</string>
+    <string name="true_text">True</string>
+    <string name="false_text">False</string>
+</resources>
