@@ -3,4 +3,6 @@
     <string name="question_text">Kyiv is the capital of Ukraine</string>
     <string name="true_text">True</string>
     <string name="false_text">False</string>
+    <string name="correct_text">Correct</string>
+    <string name="incorrect_text">Incorrect</string>
 </resources>
