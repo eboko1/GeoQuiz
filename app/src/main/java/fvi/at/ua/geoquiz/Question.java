@@ -13,7 +13,7 @@ public class Question {
             mTextId = textResId;
     }
 
-    public boolean isAnswerTrue() {
+    public boolean getIsAnswerTrue() {
         return mAnswerTrue;
     }
 
