@@ -1,8 +1,18 @@
 <resources>
     <string name="app_name">GeoQuiz</string>
-    <string name="question_text">Kyiv is the capital of Ukraine</string>
-    <string name="true_text">True</string>
-    <string name="false_text">False</string>
+
+    <string name="true_button">True</string>
+    <string name="false_button">False</string>
+    <string name="next_button">Next</string>
     <string name="correct_text">Correct</string>
     <string name="incorrect_text">Incorrect</string>
+
+    <string name="question_hoverla">Hoverla is the highest mountain of Ukraine</string>
+    <string name="question_dnipro">The smallest river in Ukraine - Dnipro</string>
+    <string name="question_kyiv">Kyiv is the capital of Ukraine</string>
+    <string name="question_lviv">Lviv is the Polish city</string>
+
+
+
+
 </resources>

@@ -10,6 +10,15 @@ import android.widget.Toast;
 public class QuizActivity extends AppCompatActivity {
     private Button mTrueButton;
     private Button mFalseButton;
+    private Button mNextButton;
+
+
+    private Question[] mQuestionBank = new Question[]{
+            new Question(R.string.question_hoverla, true),
+            new Question(R.string.question_dnipro, false),
+            new Question(R.string.question_kyiv, true),
+            new Question(R.string.question_lviv, false)
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +27,7 @@ public class QuizActivity extends AppCompatActivity {
 
         mTrueButton = (Button)findViewById(R.id.true_button);
         mFalseButton = (Button)findViewById(R.id.false_button);
+        mNextButton = (Button)findViewById(R.id.next_button);
 
 
         mTrueButton.setOnClickListener(new View.OnClickListener() {
