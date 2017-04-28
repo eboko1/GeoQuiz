@@ -17,7 +17,7 @@ public class Question {
         return mAnswerTrue;
     }
 
-    public int getTextId() {
+    public int getTextResId() {
         return mTextId;
     }
 
