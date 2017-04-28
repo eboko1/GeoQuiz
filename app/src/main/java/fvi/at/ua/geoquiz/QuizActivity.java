@@ -22,6 +22,11 @@ public class QuizActivity extends AppCompatActivity {
             new Question(R.string.question_lviv, false)
     };
 
+    private void updateQuestion(){
+        int question = mQuestionBank[mCurrentIndex].getTextResId();
+        mQuestionTextView.setText(question);
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
