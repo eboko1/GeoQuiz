@@ -10,10 +10,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class LoginActivity extends AppCompatActivity {
-    private EditText rName;
-    private EditText rPassword;
-    private Button rSend;
-    private TextView rRegister;
+    private EditText lName;
+    private EditText lPassword;
+    private Button lSend;
+    private TextView lRegister;
     private static final String TAG = "LoginActivity ";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,13 +21,13 @@ public class LoginActivity extends AppCompatActivity {
         Log.d(TAG,"onCreate");
         setContentView(R.layout.activity_login);
 
-        rName = (EditText)findViewById(R.id.name_editText);
-        rPassword = (EditText)findViewById(R.id.password_editText);
-        rSend = (Button) findViewById(R.id.send_button);
-        rRegister =(TextView)findViewById(R.id.register_textView);
+        lName = (EditText)findViewById(R.id.name_editText);
+        lPassword = (EditText)findViewById(R.id.password_editText);
+        lSend = (Button) findViewById(R.id.send_button);
+        lRegister =(TextView)findViewById(R.id.register_textView);
 
 
-        rRegister.setOnClickListener(new View.OnClickListener() {
+        lRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG,"onClick register");

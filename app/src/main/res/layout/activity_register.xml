@@ -5,20 +5,55 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="fvi.at.ua.geoquiz.LoginActivity"
+    android:background="@color/colorYellow"
     android:gravity="center"
     android:orientation="vertical">
 
     <EditText
-        android:id="@+id/first_name_edit_text"
+        android:id="@+id/first_name_editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="First name" />
-    <EditText
-        android:id="@+id/last_name_edit_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Last name" />
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:ems="10"
+        android:hint="First name"
+        android:inputType="textPersonName"
 
+        android:textColorHint="@android:color/black" />
+
+    <EditText
+        android:id="@+id/last_name_editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:ems="10"
+        android:hint="Last name"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/colorBlack" />
+
+    <EditText
+        android:id="@+id/password_editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="numberPassword"
+        android:textColorHint="@color/colorBlack" />
+
+    <Button
+        android:id="@+id/register_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="@string/register_button"
+        android:textColor="@color/colorWhite" />
 
 
 </LinearLayout>

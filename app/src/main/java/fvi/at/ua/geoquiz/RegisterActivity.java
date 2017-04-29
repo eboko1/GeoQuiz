@@ -11,12 +11,31 @@ import android.widget.TextView;
 
 public class RegisterActivity extends AppCompatActivity {
     private static final String TAG = "RegisterActivity";
+    private EditText rFirstName;
+    private EditText rLastName;
+    private EditText rPassword;
+    private Button rRegister;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate register class");
         setContentView(R.layout.activity_register);
+
+        rFirstName = (EditText)findViewById(R.id.first_name_editText);
+        rLastName = (EditText)findViewById(R.id.last_name_editText);
+        rPassword = (EditText)findViewById(R.id.password_editText);
+        rRegister = (Button)findViewById(R.id.register_button);
+
+        rRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent registerIntent = new Intent(RegisterActivity.this,QuizActivity.class);
+                RegisterActivity.this.startActivity(registerIntent
+                );
+            }
+        });
 
 
 

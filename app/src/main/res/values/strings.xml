@@ -14,11 +14,12 @@
 
 
     <string name="send_in_button">SEND IN</string>
-    <string name="register_text_view">Register!</string>
+    <string name="register_text_view">Register Here!</string>
 
 
 
-    <string name="first_name_text_view">Name</string>
+    <string name="register_button">REGISTER</string>
+
 
 
 
