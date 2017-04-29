@@ -18,7 +18,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(TAG,"onCreate");
+        Log.d(TAG,"onCreate LoginActivity");
         setContentView(R.layout.activity_login);
 
         lName = (EditText)findViewById(R.id.name_editText);
@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         lRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG,"onClick register");
+                Log.d(TAG,"onClick register text view");
                 Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
                 LoginActivity.this.startActivity(registerIntent);
             }
