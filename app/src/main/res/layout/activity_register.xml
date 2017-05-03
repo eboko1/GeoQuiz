@@ -5,55 +5,106 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="fvi.at.ua.geoquiz.LoginActivity"
-    android:background="@color/colorYellow"
+    android:background="@color/colorBackgroundRegister"
     android:gravity="center"
     android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reg_form_text_view"
+        android:textColor="@color/colorWhite" />
 
     <EditText
         android:id="@+id/first_name_editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:drawableLeft="@drawable/ic_user_24dp"
+        android:drawablePadding="16dp"
+        android:drawableTint="@color/colorWhite"
         android:ems="10"
-        android:hint="First name"
+        android:hint="First Name"
         android:inputType="textPersonName"
-
-        android:textColorHint="@android:color/black" />
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@android:color/background_light" />
 
     <EditText
         android:id="@+id/last_name_editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:drawableLeft="@drawable/ic_user_24dp"
+        android:drawablePadding="16dp"
+        android:drawableTint="@color/colorWhite"
         android:ems="10"
-        android:hint="Last name"
+        android:hint="Last Name"
         android:inputType="textPersonName"
-        android:textColorHint="@color/colorBlack" />
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@android:color/background_light" />
 
+
+    <EditText
+        android:id="@+id/name_editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:drawableLeft="@drawable/ic_email_24dp"
+        android:drawablePadding="16dp"
+        android:drawableTint="@color/colorWhite"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textPersonName"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@android:color/background_light" />
+    <EditText
+        android:id="@+id/login_editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:drawableLeft="@drawable/ic_user_24dp"
+        android:drawablePadding="16dp"
+        android:drawableTint="@color/colorWhite"
+        android:ems="10"
+        android:hint="Login"
+        android:inputType="textPersonName"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@android:color/background_light" />
     <EditText
         android:id="@+id/password_editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:drawableLeft="@drawable/ic_password_24dp"
+        android:drawablePadding="16dp"
+        android:drawableTint="@color/colorWhite"
         android:ems="10"
-        android:hint="Password"
-        android:inputType="numberPassword"
-        android:textColorHint="@color/colorBlack" />
-
+        android:hint="Enter password"
+        android:inputType="textPassword"
+        android:textColorHint="@color/colorWhite" />
     <Button
-        android:id="@+id/register_button"
-        android:layout_width="wrap_content"
+        android:id="@+id/send_button"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:layout_marginBottom="10dp"
-        android:background="@color/colorPrimaryDark"
-        android:text="@string/register_button"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@color/colorAccent"
+        android:text="@string/send_button"
+        android:textStyle="bold"
+        android:textSize="16sp"
         android:textColor="@color/colorWhite" />
-
 
 </LinearLayout>

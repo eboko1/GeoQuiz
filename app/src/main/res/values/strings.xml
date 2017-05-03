@@ -15,11 +15,13 @@
 
     <string name="send_in_button">SEND IN</string>
     <string name="register_text_view">Register Here!</string>
+    <string name="forgotten_text_view">Forgotten Password?</string>
+    <string name="first_name_text_view">First Name</string>
+    <string name="last_name_text_view">Last Name</string>
 
 
-
-    <string name="register_button">REGISTER</string>
-
+    <string name="send_button">SEND</string>
+    <string name="reg_form_text_view">Registration form</string>
 
 
 
