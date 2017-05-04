@@ -17,6 +17,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText rFirstName;
     private EditText rLastName;
     private EditText rPassword;
+    private EditText rEmail;
     private EditText rLogin;
     private Button rRegister;
 
@@ -30,6 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
         rFirstName = (EditText)findViewById(R.id.first_name_editText);
         rLastName = (EditText)findViewById(R.id.last_name_editText);
         rPassword = (EditText)findViewById(R.id.password_editText);
+        rEmail = (EditText)findViewById(R.id.email_editText);
         rLogin = (EditText)findViewById(R.id.login_editText);
 
         rRegister = (Button)findViewById(R.id.send_button);
@@ -52,11 +54,16 @@ public class RegisterActivity extends AppCompatActivity {
         //editor.putString("firstname",rFirstName.getText().toString());
         //editor.putString("lastname",rLastName.getText().toString());
        // editor.putString("password",rPassword.getText().toString());
-        editor.putString("login",rLogin.getText().toString());
-        editor.putString("password",rPassword.getText().toString());
+        if(rFirstName.getText().toString().equals(null) || rLastName.getText().toString().equals(null) ||
+                rEmail.getText().toString().equals(null) ||rLogin.getText().toString().equals(null) ||
+                rPassword.getText().toString().equals(null)){
+            Toast.makeText(this, "Please enter data", Toast.LENGTH_LONG).show();
+        } else {
+            editor.putString("login", rLogin.getText().toString());
+            editor.putString("password", rPassword.getText().toString());
 
-        Toast.makeText(this,"Saved!",Toast.LENGTH_LONG).show();
-
+            Toast.makeText(this, "Saved!", Toast.LENGTH_LONG).show();
+        }
     }
 
 }
