@@ -10,12 +10,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class RegisterActivity extends AppCompatActivity {
     private static final String TAG = "RegisterActivity";
     private EditText rFirstName;
     private EditText rLastName;
     private EditText rPassword;
+    private EditText rLogin;
     private Button rRegister;
 
 
@@ -28,6 +30,8 @@ public class RegisterActivity extends AppCompatActivity {
         rFirstName = (EditText)findViewById(R.id.first_name_editText);
         rLastName = (EditText)findViewById(R.id.last_name_editText);
         rPassword = (EditText)findViewById(R.id.password_editText);
+        rLogin = (EditText)findViewById(R.id.login_editText);
+
         rRegister = (Button)findViewById(R.id.send_button);
 
         rRegister.setOnClickListener(new View.OnClickListener() {
@@ -45,8 +49,13 @@ public class RegisterActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("infoUser", Context.MODE_PRIVATE);
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("firstname",rFirstName.getText().toString());
-        editor.putString("lastname",rLastName.getText().toString());
+        //editor.putString("firstname",rFirstName.getText().toString());
+        //editor.putString("lastname",rLastName.getText().toString());
+       // editor.putString("password",rPassword.getText().toString());
+        editor.putString("login",rLogin.getText().toString());
+        editor.putString("password",rPassword.getText().toString());
+
+        Toast.makeText(this,"Saved!",Toast.LENGTH_LONG).show();
 
     }
 
