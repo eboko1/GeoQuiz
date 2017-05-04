@@ -38,9 +38,9 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "Register button click");
-                Intent registerIntent = new Intent(RegisterActivity.this,QuizActivity.class);
-                RegisterActivity.this.startActivity(registerIntent
-                );
+                saveInfoUser(rRegister);
+               // Intent registerIntent = new Intent(RegisterActivity.this,QuizActivity.class);
+               // RegisterActivity.this.startActivity(registerIntent);
             }
         });
     }
