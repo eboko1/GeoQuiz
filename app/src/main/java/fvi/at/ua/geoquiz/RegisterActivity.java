@@ -1,6 +1,8 @@
 package fvi.at.ua.geoquiz;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,10 +39,15 @@ public class RegisterActivity extends AppCompatActivity {
                 );
             }
         });
+    }
+    //Save user login info
+    public void saveInfoUser(View v){
+        SharedPreferences sharedPreferences = getSharedPreferences("infoUser", Context.MODE_PRIVATE);
 
-
-
-
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("firstname",rFirstName.getText().toString());
+        editor.putString("lastname",rLastName.getText().toString());
 
     }
+
 }
