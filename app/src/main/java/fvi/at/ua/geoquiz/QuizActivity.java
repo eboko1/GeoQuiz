@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 public class QuizActivity extends AppCompatActivity {
     private static final String TAG = "QuizActivity";
+    private static final String KEY_INDEX = "index";
 
     private Button mTrueButton;
     private Button mFalseButton;
@@ -47,38 +48,41 @@ public class QuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+        if (savedInstanceState != null) {
+            mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
+        }
 
-        mQuestionTextView = (TextView)findViewById(R.id.question_text_view);
+        mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
 
 
         int question = mQuestionBank[mCurrentIndex].getTextResId();
         mQuestionTextView.setText(question);
 
 
-        mTrueButton = (Button)findViewById(R.id.true_button);
-        mFalseButton = (Button)findViewById(R.id.false_button);
-        mNextButton = (Button)findViewById(R.id.next_button);
-        mPrevButton = (Button)findViewById(R.id.prev_button);
+        mTrueButton = (Button) findViewById(R.id.true_button);
+        mFalseButton = (Button) findViewById(R.id.false_button);
+        mNextButton = (Button) findViewById(R.id.next_button);
+        mPrevButton = (Button) findViewById(R.id.prev_button);
 
 
         mTrueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            checkAnswer(true);
-               // Toast.makeText(QuizActivity.this, R.string.incorrect_text,Toast.LENGTH_LONG).show();
+                checkAnswer(true);
+                // Toast.makeText(QuizActivity.this, R.string.incorrect_text,Toast.LENGTH_LONG).show();
             }
         });
         mFalseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 checkAnswer(false);
-               // Toast.makeText(QuizActivity.this, R.string.correct_text,Toast.LENGTH_LONG).show();
+                // Toast.makeText(QuizActivity.this, R.string.correct_text,Toast.LENGTH_LONG).show();
             }
         });
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mCurrentIndex = (mCurrentIndex + 1)% mQuestionBank.length;
+                mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
                 updateQuestion();
             }
         });
@@ -89,8 +93,17 @@ public class QuizActivity extends AppCompatActivity {
                 updateQuestion();
             }
         });
-        updateQuestion();
     }
+        @Override
+        public void onSaveInstanceState (Bundle savedInstanceState){
+            super.onSaveInstanceState(savedInstanceState);
+            Log.d(TAG,"nSaveInstanceState");
+            savedInstanceState.putInt(KEY_INDEX,mCurrentIndex);
+        }
+
+
+
+
     @Override
     public void onStart(){
         super.onStart();
