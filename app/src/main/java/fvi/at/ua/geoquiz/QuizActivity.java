@@ -60,7 +60,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
     public void onSaveInstanceState (Bundle savedInstanceState){
 
         super.onSaveInstanceState(savedInstanceState);
-        Log.d(TAG,"onSaveInstanceState");
+       // Log.d(TAG,"onSaveInstanceState");
         savedInstanceState.putInt(KEY_INDEX,mCurrentIndex);
     }
 
@@ -88,7 +88,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                 if (mCurrentIndex > 0) {
                     mCurrentIndex = (mCurrentIndex - 1) % mQuestionBank.length;
                     updateQuestion();
-                    Toast.makeText(this, "mCurrentIndexPrev " + mCurrentIndex, Toast.LENGTH_LONG).show();
+                    //Toast.makeText(this, "mCurrentIndexPrev " + mCurrentIndex, Toast.LENGTH_LONG).show();
                 } else {
                     mCurrentIndex = 1;
                     mCurrentIndex = (mCurrentIndex - 1) % mQuestionBank.length;
@@ -98,7 +98,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.next_button:
                 mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
                 updateQuestion();
-                Toast.makeText(this, "mCurrentIndexNext "+mCurrentIndex,Toast.LENGTH_LONG).show();
+                //Toast.makeText(this, "mCurrentIndexNext "+mCurrentIndex,Toast.LENGTH_LONG).show();
                 break;
             case R.id.false_button:
                 checkAnswer(false);
