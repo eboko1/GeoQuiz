@@ -17,6 +17,7 @@ public class QuizActivity extends AppCompatActivity {
     private Button mNextButton;
     private Button mPrevButton;
     private TextView mQuestionTextView;
+
     private int mCurrentIndex = 0;
 
 
