@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,12 +15,11 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
     private Button mTrueButton;
     private Button mFalseButton;
-    private Button mNextButton;
-    private Button mPrevButton;
+    private ImageButton mNextButton;
+    private ImageButton mPrevButton;
     private TextView mQuestionTextView;
 
     private int mCurrentIndex = 0;
-
 
     private Question[] mQuestionBank = new Question[]{
             new Question(R.string.question_hoverla, true),
@@ -28,29 +28,32 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
             new Question(R.string.question_lviv, false)
     };
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
         if (savedInstanceState != null) {
-            mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
+            mCurrentIndex= savedInstanceState.getInt(KEY_INDEX, 0);
         }
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
 
+        //question one with array question Hoverla
         int question = mQuestionBank[mCurrentIndex].getTextResId();
         mQuestionTextView.setText(question);
 
+
         mTrueButton = (Button) findViewById(R.id.true_button);
         mFalseButton = (Button) findViewById(R.id.false_button);
-        mNextButton = (Button) findViewById(R.id.next_button);
-        mPrevButton = (Button) findViewById(R.id.prev_button);
+        mNextButton = (ImageButton) findViewById(R.id.next_button);
+        mPrevButton = (ImageButton) findViewById(R.id.prev_button);
 
         mPrevButton.setOnClickListener(this);
         mNextButton.setOnClickListener(this);
         mFalseButton.setOnClickListener(this);
         mTrueButton.setOnClickListener(this);
-        Log.d(TAG,"onCreate");
+        mQuestionTextView.setOnClickListener(this);
     }
 
     @Override
@@ -82,7 +85,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
         int id = v.getId();
         switch (id){
             case R.id.prev_button:
-                mCurrentIndex = (mCurrentIndex + 1)% mQuestionBank.length;
+                mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
                 updateQuestion();
                 break;
             case R.id.next_button:
@@ -96,6 +99,10 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.true_button:
                 checkAnswer(true);
                 // Toast.makeText(QuizActivity.this, R.string.incorrect_text,Toast.LENGTH_LONG).show();
+                break;
+            case R.id.question_text_view:
+                mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+                updateQuestion();
                 break;
         }
     }

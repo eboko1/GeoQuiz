@@ -19,8 +19,9 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(TAG,"onCreate LoginActivity");
         setContentView(R.layout.activity_login);
+
+        Log.d(TAG,"onCreate LoginActivity");
 
         lName = (EditText)findViewById(R.id.name_editText);
         lPassword = (EditText)findViewById(R.id.password_editText);

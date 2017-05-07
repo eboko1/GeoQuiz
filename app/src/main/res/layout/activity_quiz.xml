@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackgroundQuizActivity"
+    android:background="@color/colorEditTextLine"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -10,6 +10,9 @@
         android:id="@+id/question_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@color/colorWhite"
+
         android:padding="24dp" />
 
     <LinearLayout
@@ -21,14 +24,16 @@
             android:id="@+id/true_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/true_button" />
+            android:textColor="@color/colorEditTextLine"
+            android:text="@string/true_button"     />
 
         <Button
             android:id="@+id/false_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:text="@string/false_button" />
+            android:textColor="@color/colorEditTextLine"
+            android:text="@string/false_button"       />
 
     </LinearLayout>
 
@@ -36,23 +41,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <Button
+        <ImageButton
             android:id="@+id/prev_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="PREV"
-            android:drawableLeft="@drawable/arrow_left"
-           />
+            android:layout_marginTop="30dp"
+            android:background="@drawable/ic_left" />
 
-        <Button
+        <ImageButton
             android:id="@+id/next_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="5dp"
-            android:text="NEXT"
-            android:drawableRight="@drawable/arrow_right" />
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="210dp"
+            android:background="@drawable/ic_right" />
     </LinearLayout>
 
 </LinearLayout>

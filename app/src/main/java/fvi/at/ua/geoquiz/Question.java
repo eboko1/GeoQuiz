@@ -12,7 +12,7 @@ public class Question {
     private static final String TAG = "Question ";
 
     public Question(int textResId, boolean answerTrue) {
-        Log.d(TAG,"Constructor Question");
+            Log.d(TAG,"Constructor Question");
             mAnswerTrue = answerTrue;
             mTextId = textResId;
     }
