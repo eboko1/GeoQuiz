@@ -2,6 +2,7 @@ package fvi.at.ua.geoquiz;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -10,7 +11,7 @@ import android.widget.TextView;
  * Created by Vika on 08.05.2017.
  */
 
-public class CheatActivity extends Activity implements View.OnClickListener {
+public class CheatActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView chAnswerTView;
     private Button chAnswerBtn;
 
