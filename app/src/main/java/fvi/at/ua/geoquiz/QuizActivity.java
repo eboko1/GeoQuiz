@@ -77,7 +77,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             messageResId = R.string.incorrect_text;
         }
-        Toast.makeText(this, messageResId, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show();
     }
 
     @Override
