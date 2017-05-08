@@ -24,6 +24,11 @@
     <string name="reg_form_text_view">Registration form</string>
 
 
+    <string name="answer_btn">Answer</string>
+    <string name="cheat_textVew">Cheat!</string>
+    <string name="cheat_toast">Cheating is wrong.</string>
+    <string name="warning_textVew">Are you sure you want to do this?</string>
+
 
 
 </resources>

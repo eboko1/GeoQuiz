@@ -1,5 +1,6 @@
 package fvi.at.ua.geoquiz;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,15 +14,17 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
     private static final String TAG = "QuizActivity";
     private static final String KEY_INDEX = "index";
 
-    private Button mTrueButton;
-    private Button mFalseButton;
-    private ImageButton mNextButton;
-    private ImageButton mPrevButton;
-    private TextView mQuestionTextView;
+    private Button qTrueButton;
+    private Button qFalseButton;
+    private ImageButton qNextButton;
+    private ImageButton qPrevButton;
+    private TextView qQuestionTextView;
 
-    private int mCurrentIndex = 0;
+    private TextView qCheatTextV;
 
-    private Question[] mQuestionBank = new Question[]{
+    private int qCurrentIndex = 0;
+
+    private Question[] qQuestionBank = new Question[]{
             new Question(R.string.question_hoverla, true),
             new Question(R.string.question_dnipro, false),
             new Question(R.string.question_kyiv, true),
@@ -35,25 +38,29 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_quiz);
 
         if (savedInstanceState != null) {
-            mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
+            qCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
         }
-        mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
+        qQuestionTextView = (TextView) findViewById(R.id.question_text_view);
 
         //question one with array question Hoverla
-        int question = mQuestionBank[mCurrentIndex].getTextResId();
-        mQuestionTextView.setText(question);
+        int question = qQuestionBank[qCurrentIndex].getTextResId();
+        qQuestionTextView.setText(question);
 
 
-        mTrueButton = (Button) findViewById(R.id.true_button);
-        mFalseButton = (Button) findViewById(R.id.false_button);
-        mNextButton = (ImageButton) findViewById(R.id.next_button);
-        mPrevButton = (ImageButton) findViewById(R.id.prev_button);
+        qTrueButton = (Button) findViewById(R.id.true_button);
+        qFalseButton = (Button) findViewById(R.id.false_button);
+        qNextButton = (ImageButton) findViewById(R.id.next_button);
+        qPrevButton = (ImageButton) findViewById(R.id.prev_button);
 
-        mPrevButton.setOnClickListener(this);
-        mNextButton.setOnClickListener(this);
-        mFalseButton.setOnClickListener(this);
-        mTrueButton.setOnClickListener(this);
-        mQuestionTextView.setOnClickListener(this);
+        qCheatTextV = (TextView)findViewById(R.id.cheat_textView);
+
+        qPrevButton.setOnClickListener(this);
+        qNextButton.setOnClickListener(this);
+        qFalseButton.setOnClickListener(this);
+        qTrueButton.setOnClickListener(this);
+        qQuestionTextView.setOnClickListener(this);
+
+        qCheatTextV.setOnClickListener(this);
     }
 
     @Override
@@ -61,16 +68,16 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
         super.onSaveInstanceState(savedInstanceState);
        // Log.d(TAG,"onSaveInstanceState");
-        savedInstanceState.putInt(KEY_INDEX,mCurrentIndex);
+        savedInstanceState.putInt(KEY_INDEX, qCurrentIndex);
     }
 
     private void updateQuestion(){
-        mQuestionTextView.setText( mQuestionBank[mCurrentIndex].getTextResId());
+        qQuestionTextView.setText( qQuestionBank[qCurrentIndex].getTextResId());
 
     }
 
     private  void checkAnswer(boolean userPressedTrue){
-        boolean answerIsTrue = mQuestionBank[mCurrentIndex].getIsAnswerTrue();
+        boolean answerIsTrue = qQuestionBank[qCurrentIndex].getIsAnswerTrue();
         int messageResId = 0;
         if (userPressedTrue == answerIsTrue){
             messageResId = R.string.correct_text;
@@ -85,18 +92,18 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
         int id = v.getId();
         switch (id){
             case R.id.prev_button:
-                if (mCurrentIndex > 0) {
-                    mCurrentIndex = (mCurrentIndex - 1) % mQuestionBank.length;
+                if (qCurrentIndex > 0) {
+                    qCurrentIndex = (qCurrentIndex - 1) % qQuestionBank.length;
                     updateQuestion();
                     //Toast.makeText(this, "mCurrentIndexPrev " + mCurrentIndex, Toast.LENGTH_LONG).show();
                 } else {
-                    mCurrentIndex = 1;
-                    mCurrentIndex = (mCurrentIndex - 1) % mQuestionBank.length;
+                    qCurrentIndex = 1;
+                    qCurrentIndex = (qCurrentIndex - 1) % qQuestionBank.length;
                     updateQuestion();
                 }
                     break;
             case R.id.next_button:
-                mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+                qCurrentIndex = (qCurrentIndex + 1) % qQuestionBank.length;
                 updateQuestion();
                 //Toast.makeText(this, "mCurrentIndexNext "+mCurrentIndex,Toast.LENGTH_LONG).show();
                 break;
@@ -109,8 +116,12 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                 // Toast.makeText(QuizActivity.this, R.string.incorrect_text,Toast.LENGTH_LONG).show();
                 break;
             case R.id.question_text_view:
-                mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+                qCurrentIndex = (qCurrentIndex + 1) % qQuestionBank.length;
                 updateQuestion();
+                break;
+            case R.id.cheat_textView:
+                Intent intent = new Intent(this, CheatActivity.class);
+                startActivity(intent);
                 break;
         }
     }
