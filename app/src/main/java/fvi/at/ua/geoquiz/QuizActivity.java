@@ -80,9 +80,9 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
         boolean answerIsTrue = qQuestionBank[qCurrentIndex].getIsAnswerTrue();
         int messageResId = 0;
         if (userPressedTrue == answerIsTrue){
-            messageResId = R.string.correct_text;
+            messageResId = R.string.correct_toast;
         } else {
-            messageResId = R.string.incorrect_text;
+            messageResId = R.string.incorrect_toast;
         }
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show();
     }
