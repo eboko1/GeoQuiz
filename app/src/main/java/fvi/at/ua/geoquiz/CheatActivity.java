@@ -1,6 +1,8 @@
 package fvi.at.ua.geoquiz;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +15,8 @@ import android.widget.TextView;
  */
 
 public class CheatActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final String EXTRA_ANSWER_IS_TRUE ="fvi.at.ua.geoquiz.answer_is_true";
+
     private TextView chAnswerTView;
     private Button chAnswerBtn;
 
@@ -41,5 +45,10 @@ public class CheatActivity extends AppCompatActivity implements View.OnClickList
                 break;
         }
     }
-    
+
+    public static Intent cheatIntent(Context packageContext, boolean answerTrue){
+        Intent i = new Intent(packageContext, CheatActivity.class);
+        i.putExtra(EXTRA_ANSWER_IS_TRUE,answerTrue);
+        return i;
+    }
 }
