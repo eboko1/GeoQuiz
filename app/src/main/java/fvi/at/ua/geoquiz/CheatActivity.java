@@ -48,6 +48,7 @@ public class CheatActivity extends AppCompatActivity implements View.OnClickList
 
     public static Intent cheatIntent(Context packageContext, boolean answerTrue){
         Intent i = new Intent(packageContext, CheatActivity.class);
+
         i.putExtra(EXTRA_ANSWER_IS_TRUE,answerTrue);
         return i;
     }

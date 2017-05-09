@@ -23,6 +23,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
     private TextView qCheatTextV;
 
+
     private int qCurrentIndex = 0;
 
     private Question[] qQuestionBank = new Question[]{
@@ -123,7 +124,10 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                 updateQuestion();
                 break;
             case R.id.cheat_textView:
-                Intent intent = new Intent(this, CheatActivity.class);
+                //start cheat activity
+               // Intent intent = new Intent(this, CheatActivity.class);
+                boolean answerIsTrue = qQuestionBank[qCurrentIndex].getIsAnswerTrue();
+                Intent intent = CheatActivity.cheatIntent(QuizActivity.this,answerIsTrue);
                 startActivity(intent);
                 break;
         }
