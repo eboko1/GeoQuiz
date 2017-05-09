@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#3F51B5</color>
+    <color name="colorActionBar">#FF686E95</color>
     <color name="colorBackgroundRegister">#FF4052B5</color>
     <color name="colorBackgroundQuizActivity">#FF9474C7</color>
     <color name="colorEditTextLine">#FF5B6ECB</color>
