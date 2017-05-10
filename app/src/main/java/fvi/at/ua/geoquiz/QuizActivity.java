@@ -127,7 +127,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                 //start cheat activity
                // Intent intent = new Intent(this, CheatActivity.class);
                 boolean answerIsTrue = qQuestionBank[qCurrentIndex].getIsAnswerTrue();
-                Intent intent = CheatActivity.cheatIntent(QuizActivity.this,answerIsTrue);
+                Intent intent = CheatActivity.cheatIntent(this,answerIsTrue);
                 startActivity(intent);
                 break;
         }

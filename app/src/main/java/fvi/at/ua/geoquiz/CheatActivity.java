@@ -20,6 +20,8 @@ public class CheatActivity extends AppCompatActivity implements View.OnClickList
     private TextView chAnswerTView;
     private Button chAnswerBtn;
 
+    private boolean chAnswerIsTrue;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,12 +42,19 @@ public class CheatActivity extends AppCompatActivity implements View.OnClickList
 
         switch (id){
             case R.id.answer_btn:
+                chAnswerIsTrue = getIntent().getBooleanExtra(EXTRA_ANSWER_IS_TRUE, false);
 
-                chAnswerTView.setText("Waiting...");
+                if(chAnswerIsTrue == true) {
+                    chAnswerTView.setText(getText(R.string.true_button));
+                } else {
+                    chAnswerTView.setText(getText(R.string.false_button));
+
+                }
                 break;
         }
     }
 
+    // get data from QuizActivity
     public static Intent cheatIntent(Context packageContext, boolean answerTrue){
         Intent i = new Intent(packageContext, CheatActivity.class);
 
