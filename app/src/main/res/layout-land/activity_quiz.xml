@@ -60,6 +60,7 @@
         android:id="@+id/question_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
         android:textSize="18sp"
         android:textColor="@color/colorWhite"
         android:padding="2dp" />
