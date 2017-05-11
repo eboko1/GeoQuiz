@@ -34,8 +34,8 @@
 
 
 
-    <string name="score_textVew">Score:</string>
-
+    <string name="right_text">Right:</string>
+    <string name="wrong_text">Wrong:</string>
 
 
 </resources>

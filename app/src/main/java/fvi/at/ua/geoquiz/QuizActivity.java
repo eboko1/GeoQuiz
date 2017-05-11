@@ -25,10 +25,12 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
     private TextView qQuestionTextView;
 
     private TextView qCheatTextV;
-    private TextView scoreTextView;
+    private TextView rightTextView;
+    private TextView wrongTextView;
 
     // count score
-    private int qScore = 0;
+    private int qRight = 0;
+    private int qWrong = 0;
     private int qCurrentIndex = 0;
 
     private Question[] qQuestionBank = new Question[]{
@@ -48,7 +50,8 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
         if (savedInstanceState != null) {
             qCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
-            qScore = savedInstanceState.getInt("score");
+            qRight = savedInstanceState.getInt("right");
+            qWrong = savedInstanceState.getInt("wrong");
         }
         qQuestionTextView = (TextView) findViewById(R.id.question_text_view);
 
@@ -64,8 +67,11 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
         qCheatTextV = (TextView)findViewById(R.id.cheat_textView);
 
-        scoreTextView = (TextView)findViewById(R.id.score_textView);
-        scoreTextView.setText(String.valueOf(qScore));
+        rightTextView = (TextView)findViewById(R.id.right_textView);
+        rightTextView.setText(String.valueOf(qRight));
+
+        wrongTextView = (TextView)findViewById(R.id.wrong_textView);
+        wrongTextView.setText(String.valueOf(qWrong));
 
         qPrevButton.setOnClickListener(this);
         qNextButton.setOnClickListener(this);
@@ -80,10 +86,12 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
         int messageResId = 0;
         if (userPressedTrue == answerIsTrue){
             messageResId = R.string.correct_toast;
-            qScore++;
-            scoreTextView.setText(String.valueOf(qScore));
+            qRight++;
+            rightTextView.setText(String.valueOf(qRight));
         } else {
             messageResId = R.string.incorrect_toast;
+            qWrong++;
+            wrongTextView.setText(String.valueOf(qWrong));
         }
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show();
     }
@@ -93,7 +101,8 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
         super.onSaveInstanceState(savedInstanceState);
        // Log.d(TAG,"onSaveInstanceState");
         savedInstanceState.putInt(KEY_INDEX, qCurrentIndex);
-        savedInstanceState.putInt("score", qScore);
+        savedInstanceState.putInt("right", qRight);
+        savedInstanceState.putInt("wrong", qWrong);
     }
 
     private void updateQuestion(){
