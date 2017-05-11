@@ -5,6 +5,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.StringBuilderPrinter;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -15,6 +16,8 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
     private static final String TAG = "QuizActivity";
     private static final String KEY_INDEX = "index";
 
+
+
     private Button qTrueButton;
     private Button qFalseButton;
     private ImageButton qNextButton;
@@ -22,8 +25,10 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
     private TextView qQuestionTextView;
 
     private TextView qCheatTextV;
+    private TextView scoreTextView;
 
-
+    // count score
+    private int qScore = 0;
     private int qCurrentIndex = 0;
 
     private Question[] qQuestionBank = new Question[]{
@@ -43,6 +48,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
         if (savedInstanceState != null) {
             qCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
+            qScore = savedInstanceState.getInt("score");
         }
         qQuestionTextView = (TextView) findViewById(R.id.question_text_view);
 
@@ -51,12 +57,15 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
         qQuestionTextView.setText(question);
 
 
-        qTrueButton = (Button) findViewById(R.id.true_button);
-        qFalseButton = (Button) findViewById(R.id.false_button);
-        qNextButton = (ImageButton) findViewById(R.id.next_button);
-        qPrevButton = (ImageButton) findViewById(R.id.prev_button);
+        qTrueButton = (Button)findViewById(R.id.true_button);
+        qFalseButton = (Button)findViewById(R.id.false_button);
+        qNextButton = (ImageButton)findViewById(R.id.next_button);
+        qPrevButton = (ImageButton)findViewById(R.id.prev_button);
 
         qCheatTextV = (TextView)findViewById(R.id.cheat_textView);
+
+        scoreTextView = (TextView)findViewById(R.id.score_textView);
+        scoreTextView.setText(String.valueOf(qScore));
 
         qPrevButton.setOnClickListener(this);
         qNextButton.setOnClickListener(this);
@@ -66,13 +75,25 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
         qCheatTextV.setOnClickListener(this);
     }
-
+    private  void checkAnswer(boolean userPressedTrue){
+        boolean answerIsTrue = qQuestionBank[qCurrentIndex].getIsAnswerTrue();
+        int messageResId = 0;
+        if (userPressedTrue == answerIsTrue){
+            messageResId = R.string.correct_toast;
+            qScore++;
+            scoreTextView.setText(String.valueOf(qScore));
+        } else {
+            messageResId = R.string.incorrect_toast;
+        }
+        Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show();
+    }
     @Override
     public void onSaveInstanceState (Bundle savedInstanceState){
 
         super.onSaveInstanceState(savedInstanceState);
        // Log.d(TAG,"onSaveInstanceState");
         savedInstanceState.putInt(KEY_INDEX, qCurrentIndex);
+        savedInstanceState.putInt("score", qScore);
     }
 
     private void updateQuestion(){
@@ -80,16 +101,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    private  void checkAnswer(boolean userPressedTrue){
-        boolean answerIsTrue = qQuestionBank[qCurrentIndex].getIsAnswerTrue();
-        int messageResId = 0;
-        if (userPressedTrue == answerIsTrue){
-            messageResId = R.string.correct_toast;
-        } else {
-            messageResId = R.string.incorrect_toast;
-        }
-        Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show();
-    }
+
 
     @Override
     public void onClick(View v) {

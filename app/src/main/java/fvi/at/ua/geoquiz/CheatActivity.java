@@ -48,7 +48,6 @@ public class CheatActivity extends AppCompatActivity implements View.OnClickList
                     chAnswerTView.setText(getText(R.string.true_button));
                 } else {
                     chAnswerTView.setText(getText(R.string.false_button));
-
                 }
                 break;
         }
