@@ -69,4 +69,8 @@ public class CheatActivity extends AppCompatActivity implements View.OnClickList
         i.putExtra(EXTRA_ANSWER_IS_TRUE, answerTrue);
         return i;
     }
+    public static boolean wasAnswerShown(Intent result){
+        return result.getBooleanExtra(EXTRA_ANSWER_SHOWN, false);
+
+    }
 }
