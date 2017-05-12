@@ -15,7 +15,9 @@ import android.widget.TextView;
  */
 
 public class CheatActivity extends AppCompatActivity implements View.OnClickListener {
+
     private static final String EXTRA_ANSWER_IS_TRUE ="fvi.at.ua.geoquiz.answer_is_true";
+    private static final String EXTRA_ANSWER_SHOWN ="fvi.at.ua.geoquiz.answer_shown";
 
     private TextView chAnswerTView;
     private Button chAnswerBtn;
@@ -49,15 +51,22 @@ public class CheatActivity extends AppCompatActivity implements View.OnClickList
                 } else {
                     chAnswerTView.setText(getText(R.string.false_button));
                 }
+                setAnswerShownResult(true);
                 break;
         }
+    }
+
+    private void setAnswerShownResult(boolean isAnswerShown) {
+        Intent data = new Intent();
+        data.putExtra(EXTRA_ANSWER_SHOWN, isAnswerShown);
+        setResult(RESULT_OK, data);
     }
 
     // get data from QuizActivity
     public static Intent cheatIntent(Context packageContext, boolean answerTrue){
         Intent i = new Intent(packageContext, CheatActivity.class);
 
-        i.putExtra(EXTRA_ANSWER_IS_TRUE,answerTrue);
+        i.putExtra(EXTRA_ANSWER_IS_TRUE, answerTrue);
         return i;
     }
 }

@@ -15,6 +15,7 @@ import android.widget.Toast;
 public class QuizActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "QuizActivity";
     private static final String KEY_INDEX = "index";
+    private static final  int REQUEST_CODE_CHEAT = 0;
 
 
 
@@ -149,7 +150,8 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                // Intent intent = new Intent(this, CheatActivity.class);
                 boolean answerIsTrue = qQuestionBank[qCurrentIndex].getIsAnswerTrue();
                 Intent intent = CheatActivity.cheatIntent(this,answerIsTrue);
-                startActivity(intent);
+                //startActivity(intent);
+                startActivityForResult(intent, REQUEST_CODE_CHEAT );
                 break;
         }
     }
