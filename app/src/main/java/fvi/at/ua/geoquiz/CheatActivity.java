@@ -46,6 +46,7 @@ public class CheatActivity extends AppCompatActivity implements View.OnClickList
             case R.id.answer_btn:
                 chAnswerIsTrue = getIntent().getBooleanExtra(EXTRA_ANSWER_IS_TRUE, false);
 
+
                 if(chAnswerIsTrue == true) {
                     chAnswerTView.setText(getText(R.string.true_button));
                 } else {
@@ -69,8 +70,8 @@ public class CheatActivity extends AppCompatActivity implements View.OnClickList
         i.putExtra(EXTRA_ANSWER_IS_TRUE, answerTrue);
         return i;
     }
+
     public static boolean wasAnswerShown(Intent result){
         return result.getBooleanExtra(EXTRA_ANSWER_SHOWN, false);
-
     }
 }

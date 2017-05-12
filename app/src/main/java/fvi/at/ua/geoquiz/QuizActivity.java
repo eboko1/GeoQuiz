@@ -1,5 +1,6 @@
 package fvi.at.ua.geoquiz;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
@@ -33,6 +34,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
     private int qRight = 0;
     private int qWrong = 0;
     private int qCurrentIndex = 0;
+    private boolean qIsCheater;
 
     private Question[] qQuestionBank = new Question[]{
             new Question(R.string.question_hoverla, true),
@@ -156,6 +158,17 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        if (requestCode != Activity.RESULT_OK){
+            return;
+        }
+        if (requestCode == REQUEST_CODE_CHEAT){
+            if(data == null){
+                return;
+            }
+            qIsCheater =CheatActivity.wasAnswerShown(data);
+        }
+    }
     @Override
     public void onStart(){
         super.onStart();
