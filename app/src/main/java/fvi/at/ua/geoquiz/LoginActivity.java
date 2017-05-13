@@ -36,18 +36,25 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         lRegister.setOnClickListener(this);
         lSend.setOnClickListener(this);
+
+        //saved data in loginEditText
+        loadUserLogin();
+        loadUserPassword();
     }
 
-
+    //loading data with file infoUser .INI
     private String loadUserLogin(){
         SharedPreferences shpref = getSharedPreferences("infoUser", Context.MODE_PRIVATE);
         String login = shpref.getString(KEY_LOGIN, "");
+        lName.setText(login);
+
         return login;
     }
-
+    //loading data with file infoUser .INI
     private String loadUserPassword(){
         SharedPreferences shpref = getSharedPreferences("infoUser", Context.MODE_PRIVATE);
         String password = shpref.getString(KEY_PASSWORD, "");
+        lPassword.setText(password);
         return password;
     }
 
@@ -60,7 +67,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
                 LoginActivity.this.startActivity(registerIntent);
                 break;
-            case R.id.send_button:
+            case R.id.send_in_button:
                 if(lName.getText().toString().equals(loadUserLogin()) && lPassword.getText().toString().equals(loadUserPassword())){
                     Intent quizIntent = new Intent(LoginActivity.this, QuizActivity.class);
                     LoginActivity.this.startActivity(quizIntent);
@@ -71,4 +78,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    @Override
+    protected void onDestroy(){
+
+        super.onDestroy();
+
+
+    }
 }
