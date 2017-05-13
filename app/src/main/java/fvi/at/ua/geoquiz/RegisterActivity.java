@@ -41,8 +41,8 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d(TAG, "Register button click");
                 saveInfoUser(rRegister);
-               // Intent registerIntent = new Intent(RegisterActivity.this,QuizActivity.class);
-               // RegisterActivity.this.startActivity(registerIntent);
+               Intent registerIntent = new Intent(RegisterActivity.this, LoginActivity.class);
+               RegisterActivity.this.startActivity(registerIntent);
             }
         });
 
