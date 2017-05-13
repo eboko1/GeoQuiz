@@ -41,6 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d(TAG, "Register button click");
                 saveInfoUser(rRegister);
+
                Intent registerIntent = new Intent(RegisterActivity.this, LoginActivity.class);
                RegisterActivity.this.startActivity(registerIntent);
             }
@@ -60,8 +61,9 @@ public class RegisterActivity extends AppCompatActivity {
             editor.putString("login", rLogin.getText().toString());
             editor.putString("password", rPassword.getText().toString());
             editor.commit();
+            Toast.makeText(RegisterActivity.this, "Saved!", Toast.LENGTH_SHORT).show();
 
-            Toast.makeText(this, "Saved!", Toast.LENGTH_LONG).show();
+
         }
     }
 
