@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
     private EditText lName;
     private EditText lPassword;
     private Button lSend;
@@ -34,40 +34,41 @@ public class LoginActivity extends AppCompatActivity {
         lSend = (Button) findViewById(R.id.send_in_button);
         lRegister =(TextView)findViewById(R.id.register_textView);
 
+        lRegister.setOnClickListener(this);
+        lSend.setOnClickListener(this);
+    }
 
-        lRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                        Log.d(TAG, "onClick register Here! text view");
-                        Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
-                        LoginActivity.this.startActivity(registerIntent);
-            }
 
-        });
-        lSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    private String loadUserLogin(){
+        SharedPreferences shpref = getSharedPreferences("infoUser", Context.MODE_PRIVATE);
+        String login = shpref.getString(KEY_LOGIN, "");
+        return login;
+    }
+
+    private String loadUserPassword(){
+        SharedPreferences shpref = getSharedPreferences("infoUser", Context.MODE_PRIVATE);
+        String password = shpref.getString(KEY_PASSWORD, "");
+        return password;
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        switch (id){
+            case R.id.register_textView:
+                Log.d(TAG, "onClick register Here! text view");
+                Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
+                LoginActivity.this.startActivity(registerIntent);
+                break;
+            case R.id.send_button:
                 if(lName.getText().toString().equals(loadUserLogin()) && lPassword.getText().toString().equals(loadUserPassword())){
                     Intent quizIntent = new Intent(LoginActivity.this, QuizActivity.class);
                     LoginActivity.this.startActivity(quizIntent);
                 } else {
                     Toast.makeText(LoginActivity.this,"Please go to Register form",Toast.LENGTH_LONG).show();
                 }
-            }
-        });
+                break;
+        }
     }
 
-
-    public String loadUserLogin(){
-        SharedPreferences shpref = getSharedPreferences("infoUser", Context.MODE_PRIVATE);
-        //SharedPreferences.Editor  editor = shpref.edit();
-        String login = shpref.getString(KEY_LOGIN, "");
-        return login;
-    }
-    public String loadUserPassword(){
-        SharedPreferences shpref = getSharedPreferences("infoUser", Context.MODE_PRIVATE);
-       // SharedPreferences.Editor  editor = shpref.edit();
-        String password = shpref.getString(KEY_PASSWORD, "");
-        return password;
-    }
 }

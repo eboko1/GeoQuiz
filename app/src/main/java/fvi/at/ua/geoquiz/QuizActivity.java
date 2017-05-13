@@ -34,6 +34,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
     private int qRight = 0;
     private int qWrong = 0;
     private int qCurrentIndex = 0;
+
     private boolean qIsCheater;
 
     private Question[] qQuestionBank = new Question[]{
@@ -84,22 +85,25 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
         qCheatTextV.setOnClickListener(this);
     }
+
     private  void checkAnswer(boolean userPressedTrue){
         boolean answerIsTrue = qQuestionBank[qCurrentIndex].getIsAnswerTrue();
         int messageResId = 0;
 
         if(qIsCheater){
             messageResId = R.string.cheat_toast;
-        }else
-            if (userPressedTrue == answerIsTrue){
-            messageResId = R.string.correct_toast;
-            qRight++;
-            rightTextView.setText(String.valueOf(qRight));
         } else {
-            messageResId = R.string.incorrect_toast;
-            qWrong++;
-            wrongTextView.setText(String.valueOf(qWrong));
+                if (userPressedTrue == answerIsTrue){
+                    messageResId = R.string.correct_toast;
+                    qRight++;
+                    rightTextView.setText(String.valueOf(qRight));
+                } else {
+                    messageResId = R.string.incorrect_toast;
+                    qWrong++;
+                    wrongTextView.setText(String.valueOf(qWrong));
+                 }
         }
+
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show();
     }
     @Override

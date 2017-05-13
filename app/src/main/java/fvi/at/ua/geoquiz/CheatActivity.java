@@ -50,9 +50,9 @@ public class CheatActivity extends AppCompatActivity implements View.OnClickList
                 } else {
                     chAnswerTView.setText(getText(R.string.false_button));
                 }
-                setAnswerShownResult(true);
                 break;
         }
+        setAnswerShownResult(true);
     }
 
     private void setAnswerShownResult(boolean isAnswerShown) {
