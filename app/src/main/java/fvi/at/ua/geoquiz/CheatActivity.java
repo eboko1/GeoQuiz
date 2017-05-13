@@ -45,8 +45,6 @@ public class CheatActivity extends AppCompatActivity implements View.OnClickList
         switch (id){
             case R.id.answer_btn:
                 chAnswerIsTrue = getIntent().getBooleanExtra(EXTRA_ANSWER_IS_TRUE, false);
-
-
                 if(chAnswerIsTrue == true) {
                     chAnswerTView.setText(getText(R.string.true_button));
                 } else {

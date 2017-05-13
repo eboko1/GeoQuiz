@@ -87,7 +87,11 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
     private  void checkAnswer(boolean userPressedTrue){
         boolean answerIsTrue = qQuestionBank[qCurrentIndex].getIsAnswerTrue();
         int messageResId = 0;
-        if (userPressedTrue == answerIsTrue){
+
+        if(qIsCheater){
+            messageResId = R.string.cheat_toast;
+        }else
+            if (userPressedTrue == answerIsTrue){
             messageResId = R.string.correct_toast;
             qRight++;
             rightTextView.setText(String.valueOf(qRight));
@@ -132,6 +136,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                     break;
             case R.id.next_button:
                 qCurrentIndex = (qCurrentIndex + 1) % qQuestionBank.length;
+                qIsCheater = false;
                 updateQuestion();
                 //Toast.makeText(this, "mCurrentIndexNext "+mCurrentIndex,Toast.LENGTH_LONG).show();
                 break;
@@ -166,7 +171,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
             if(data == null){
                 return;
             }
-            qIsCheater =CheatActivity.wasAnswerShown(data);
+            qIsCheater = CheatActivity.wasAnswerShown(data);
         }
     }
     @Override

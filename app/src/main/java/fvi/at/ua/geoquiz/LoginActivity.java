@@ -1,6 +1,8 @@
 package fvi.at.ua.geoquiz;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +18,10 @@ public class LoginActivity extends AppCompatActivity {
     private Button lSend;
     private TextView lRegister;
     private static final String TAG = "LoginActivity ";
+
+    private static final String KEY_LOGIN ="login";
+    private static final String KEY_PASSWORD ="password";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         lSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(lName.getText().toString().equals("admin") && lPassword.getText().toString().equals("admin")){
+                if(lName.getText().toString().equals(loadUserLogin()) && lPassword.getText().toString().equals(loadUserPassword())){
                     Intent quizIntent = new Intent(LoginActivity.this, QuizActivity.class);
                     LoginActivity.this.startActivity(quizIntent);
                 } else {
@@ -49,5 +55,19 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+
+    public String loadUserLogin(){
+        SharedPreferences shpref = getSharedPreferences("infoUser", Context.MODE_PRIVATE);
+        //SharedPreferences.Editor  editor = shpref.edit();
+        String login = shpref.getString(KEY_LOGIN, "");
+        return login;
+    }
+    public String loadUserPassword(){
+        SharedPreferences shpref = getSharedPreferences("infoUser", Context.MODE_PRIVATE);
+       // SharedPreferences.Editor  editor = shpref.edit();
+        String password = shpref.getString(KEY_PASSWORD, "");
+        return password;
     }
 }

@@ -45,15 +45,13 @@ public class RegisterActivity extends AppCompatActivity {
                // RegisterActivity.this.startActivity(registerIntent);
             }
         });
+
     }
     //Save user login info
     public void saveInfoUser(View v){
-        SharedPreferences sharedPreferences = getSharedPreferences("infoUser", Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = getSharedPreferences("infoUser", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
 
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        //editor.putString("firstname",rFirstName.getText().toString());
-        //editor.putString("lastname",rLastName.getText().toString());
-       // editor.putString("password",rPassword.getText().toString());
         if(rFirstName.getText().toString().equals("") || rLastName.getText().toString().equals("") ||
                 rEmail.getText().toString().equals("") || rLogin.getText().toString().equals("") ||
                 rPassword.getText().toString().equals("")){
@@ -61,9 +59,11 @@ public class RegisterActivity extends AppCompatActivity {
         } else {
             editor.putString("login", rLogin.getText().toString());
             editor.putString("password", rPassword.getText().toString());
+            editor.commit();
 
             Toast.makeText(this, "Saved!", Toast.LENGTH_LONG).show();
         }
     }
+
 
 }
