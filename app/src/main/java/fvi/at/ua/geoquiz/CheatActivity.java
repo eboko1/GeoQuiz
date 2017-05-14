@@ -14,7 +14,7 @@ import android.widget.TextView;
  * Created by Vika on 08.05.2017.
  */
 
-public class CheatActivity extends AppCompatActivity implements View.OnClickListener {
+public class CheatActivity extends AppCompatActivity  {
 
     private static final String EXTRA_ANSWER_IS_TRUE ="fvi.at.ua.geoquiz.answer_is_true";
     private static final String EXTRA_ANSWER_SHOWN ="fvi.at.ua.geoquiz.answer_shown";
@@ -34,26 +34,25 @@ public class CheatActivity extends AppCompatActivity implements View.OnClickList
         chAnswerTView = (TextView)findViewById(R.id.answer_tView);
         chAnswerBtn =(Button)findViewById(R.id.answer_btn);
 
-        chAnswerBtn.setOnClickListener(this);
-
-    }
-
-    @Override
-    public void onClick(View v) {
-        int id = v.getId();
-
-        switch (id){
-            case R.id.answer_btn:
+        chAnswerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 chAnswerIsTrue = getIntent().getBooleanExtra(EXTRA_ANSWER_IS_TRUE, false);
                 if(chAnswerIsTrue == true) {
                     chAnswerTView.setText(getText(R.string.true_button));
                 } else {
                     chAnswerTView.setText(getText(R.string.false_button));
                 }
-                break;
-        }
-        setAnswerShownResult(true);
+                   setAnswerShownResult(true);
+            }
+        });
+
     }
+
+
+
+
+
 
     private void setAnswerShownResult(boolean isAnswerShown) {
         Intent data = new Intent();

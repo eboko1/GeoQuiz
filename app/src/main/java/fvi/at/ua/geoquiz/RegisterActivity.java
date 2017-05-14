@@ -61,7 +61,7 @@ public class RegisterActivity extends AppCompatActivity {
             editor.putString("login", rLogin.getText().toString());
             editor.putString("password", rPassword.getText().toString());
             editor.commit();
-            Toast.makeText(RegisterActivity.this, "Saved!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegisterActivity.this, "Data saved!", Toast.LENGTH_SHORT).show();
 
 
         }
