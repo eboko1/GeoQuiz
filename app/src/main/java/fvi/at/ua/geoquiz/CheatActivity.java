@@ -1,5 +1,7 @@
 package fvi.at.ua.geoquiz;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -7,6 +9,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -34,6 +37,8 @@ public class CheatActivity extends AppCompatActivity  {
         chAnswerTView = (TextView)findViewById(R.id.answer_tView);
         chAnswerBtn =(Button)findViewById(R.id.answer_btn);
 
+
+        //add animation
         chAnswerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,15 +49,27 @@ public class CheatActivity extends AppCompatActivity  {
                     chAnswerTView.setText(getText(R.string.false_button));
                 }
                    setAnswerShownResult(true);
+                //add animation code
+                int cx = chAnswerBtn.getWidth() / 2;
+                int cy = chAnswerBtn.getHeight() / 2;
+                float radius = chAnswerBtn.getWidth();
+
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                    Animator anim = ViewAnimationUtils.createCircularReveal(chAnswerBtn, cx, cy, radius, 0);
+                    anim.addListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            super.onAnimationEnd(animation);
+                            chAnswerTView.setVisibility(View.VISIBLE);
+                            chAnswerBtn.setVisibility(View.INVISIBLE);
+                        }
+                    });
+                    anim.start();
+                }
             }
         });
 
     }
-
-
-
-
-
 
     private void setAnswerShownResult(boolean isAnswerShown) {
         Intent data = new Intent();
