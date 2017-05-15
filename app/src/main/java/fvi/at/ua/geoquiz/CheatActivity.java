@@ -38,7 +38,7 @@ public class CheatActivity extends AppCompatActivity  {
         chAnswerBtn =(Button)findViewById(R.id.answer_btn);
 
 
-        //add animation
+      //add animation
         chAnswerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
