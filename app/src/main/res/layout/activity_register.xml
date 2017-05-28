@@ -88,18 +88,20 @@
         android:hint="Password"
         android:inputType="textPassword"
         android:textColorHint="@color/colorWhite" />
+
     <Button
         android:id="@+id/send_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
+        android:layout_marginTop="30dp"
         android:background="@color/colorAccent"
+        android:onClick="showDialog"
         android:text="@string/send_button"
-        android:textStyle="bold"
+        android:textColor="@color/colorWhite"
         android:textSize="16sp"
-        android:textColor="@color/colorWhite" />
+        android:textStyle="bold" />
 
 </LinearLayout>

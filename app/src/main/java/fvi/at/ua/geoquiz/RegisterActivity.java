@@ -1,8 +1,10 @@
 package fvi.at.ua.geoquiz;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -77,12 +79,33 @@ public class RegisterActivity extends AppCompatActivity {
             editor.putString("password", rPassword.getText().toString());
             editor.commit();
             Toast.makeText(RegisterActivity.this, "Data saved!", Toast.LENGTH_SHORT).show();
-            Intent registerIntent = new Intent(RegisterActivity.this, LoginActivity.class);
 
-            RegisterActivity.this.startActivity(registerIntent);
+            showDialog(rRegister);
+
         }
 
 
+    }
+
+    public void showDialog(View v){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("AlertDialog")
+                .setMessage("You back to login form?")
+                .setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                       Toast.makeText(RegisterActivity.this, "Go to login form", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent registerIntent = new Intent(RegisterActivity.this, LoginActivity.class);
+                        RegisterActivity.this.startActivity(registerIntent);
+                    }
+                });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 
 
