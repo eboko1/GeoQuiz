@@ -28,14 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate register class");
         setContentView(R.layout.activity_register);
 
-        rFirstName = (EditText)findViewById(R.id.first_name_editText);
-        rLastName = (EditText)findViewById(R.id.last_name_editText);
-        rPassword = (EditText)findViewById(R.id.password_editText);
-        rEmail = (EditText)findViewById(R.id.email_editText);
-        rLogin = (EditText)findViewById(R.id.login_editText);
-
-        rRegister = (Button)findViewById(R.id.send_button);
-
+       init();
         rRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,6 +40,16 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+    }
+    
+    private void init(){
+        rFirstName = (EditText)findViewById(R.id.first_name_editText);
+        rLastName = (EditText)findViewById(R.id.last_name_editText);
+        rPassword = (EditText)findViewById(R.id.password_editText);
+        rEmail = (EditText)findViewById(R.id.email_editText);
+        rLogin = (EditText)findViewById(R.id.login_editText);
+
+        rRegister = (Button)findViewById(R.id.send_button);
     }
     //Save user login info
     public void saveInfoUser(View v){
