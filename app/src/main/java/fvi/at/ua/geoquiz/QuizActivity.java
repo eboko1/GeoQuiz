@@ -69,10 +69,10 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
         wrongTextView.setText(String.valueOf(qWrong));
 
-        setOncklickListener();
+        initSetOnClickListener();
 
     }
-    private void setOncklickListener(){
+    private void initSetOnClickListener(){
         qPrevButton.setOnClickListener(this);
         qNextButton.setOnClickListener(this);
         qFalseButton.setOnClickListener(this);
