@@ -63,20 +63,16 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
         int question = qQuestionBank[qCurrentIndex].getTextResId();
         qQuestionTextView.setText(question);
 
+        init();
 
-        qTrueButton = (Button)findViewById(R.id.true_button);
-        qFalseButton = (Button)findViewById(R.id.false_button);
-        qNextButton = (ImageButton)findViewById(R.id.next_button);
-        qPrevButton = (ImageButton)findViewById(R.id.prev_button);
-
-        qCheatTextV = (TextView)findViewById(R.id.cheat_textView);
-
-        rightTextView = (TextView)findViewById(R.id.right_textView);
         rightTextView.setText(String.valueOf(qRight));
 
-        wrongTextView = (TextView)findViewById(R.id.wrong_textView);
         wrongTextView.setText(String.valueOf(qWrong));
 
+        setOncklickListener();
+
+    }
+    private void setOncklickListener(){
         qPrevButton.setOnClickListener(this);
         qNextButton.setOnClickListener(this);
         qFalseButton.setOnClickListener(this);
@@ -84,6 +80,17 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
         qQuestionTextView.setOnClickListener(this);
 
         qCheatTextV.setOnClickListener(this);
+    }
+    private void init(){
+        qTrueButton = (Button)findViewById(R.id.true_button);
+        qFalseButton = (Button)findViewById(R.id.false_button);
+        qNextButton = (ImageButton)findViewById(R.id.next_button);
+        qPrevButton = (ImageButton)findViewById(R.id.prev_button);
+        qCheatTextV = (TextView)findViewById(R.id.cheat_textView);
+
+        rightTextView = (TextView)findViewById(R.id.right_textView);
+
+        wrongTextView = (TextView)findViewById(R.id.wrong_textView);
     }
 
     private  void checkAnswer(boolean userPressedTrue){

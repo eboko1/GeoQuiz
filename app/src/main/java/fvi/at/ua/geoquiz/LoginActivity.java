@@ -29,10 +29,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         Log.d(TAG,"onCreate LoginActivity");
 
-        lName = (EditText)findViewById(R.id.name_editText);
-        lPassword = (EditText)findViewById(R.id.password_editText);
-        lSend = (Button) findViewById(R.id.send_in_button);
-        lRegister =(TextView)findViewById(R.id.register_textView);
+        init();
 
         lRegister.setOnClickListener(this);
         lSend.setOnClickListener(this);
@@ -40,6 +37,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         //saved data in loginEditText
         loadUserLogin();
         loadUserPassword();
+    }
+    private void init(){
+        lName = (EditText)findViewById(R.id.name_editText);
+        lPassword = (EditText)findViewById(R.id.password_editText);
+        lSend = (Button) findViewById(R.id.send_in_button);
+        lRegister =(TextView)findViewById(R.id.register_textView);
     }
 
     //loading data with file infoUser .INI
