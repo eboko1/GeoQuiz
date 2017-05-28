@@ -34,14 +34,10 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d(TAG, "Register button click");
                 saveInfoUser(rRegister);
-
-               Intent registerIntent = new Intent(RegisterActivity.this, LoginActivity.class);
-               RegisterActivity.this.startActivity(registerIntent);
             }
         });
 
     }
-    
     private void init(){
         rFirstName = (EditText)findViewById(R.id.first_name_editText);
         rLastName = (EditText)findViewById(R.id.last_name_editText);
@@ -51,23 +47,42 @@ public class RegisterActivity extends AppCompatActivity {
 
         rRegister = (Button)findViewById(R.id.send_button);
     }
+
+
     //Save user login info
     public void saveInfoUser(View v){
         SharedPreferences sharedPref = getSharedPreferences("infoUser", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
 
-        if(rFirstName.getText().toString().equals("") || rLastName.getText().toString().equals("") ||
-                rEmail.getText().toString().equals("") || rLogin.getText().toString().equals("") ||
-                rPassword.getText().toString().equals("")){
-            Toast.makeText(this, "Please enter data", Toast.LENGTH_LONG).show();
+
+        if(rFirstName.getText().toString().isEmpty()){
+            Toast.makeText(this, "Please enter NAME", Toast.LENGTH_LONG).show();
+
+        } else if(rLastName.getText().toString().isEmpty()){
+            Toast.makeText(this, "Please enter Last NAME", Toast.LENGTH_LONG).show();
+
+        } else if(rEmail.getText().toString().isEmpty()){
+            Toast.makeText(this, "Please enter EMAIL", Toast.LENGTH_LONG).show();
+
+        } else if(rLogin.getText().toString().isEmpty()){
+            Toast.makeText(this, "Please enter Login", Toast.LENGTH_LONG).show();
+
+        } else if(rPassword.getText().toString().isEmpty()){
+            Toast.makeText(this, "Please enter PASSWORD", Toast.LENGTH_LONG).show();
+
+        } else if (rEmail.getText().toString().contains("@") == false) {
+            Toast.makeText(this, "Please enter valid EMAIL", Toast.LENGTH_LONG).show();
         } else {
             editor.putString("login", rLogin.getText().toString());
             editor.putString("password", rPassword.getText().toString());
             editor.commit();
             Toast.makeText(RegisterActivity.this, "Data saved!", Toast.LENGTH_SHORT).show();
+            Intent registerIntent = new Intent(RegisterActivity.this, LoginActivity.class);
 
-
+            RegisterActivity.this.startActivity(registerIntent);
         }
+
+
     }
 
 
