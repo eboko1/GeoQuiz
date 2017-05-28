@@ -90,11 +90,12 @@ public class RegisterActivity extends AppCompatActivity {
     public void showDialog(View v){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("AlertDialog")
-                .setMessage("You back to login form?")
+                .setMessage("Do you want to go to the login form?")
+                .setCancelable(true)
                 .setNegativeButton("NO", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                       Toast.makeText(RegisterActivity.this, "Go to login form", Toast.LENGTH_SHORT).show();
+                       Toast.makeText(RegisterActivity.this, "Your data is saved, go to the login form", Toast.LENGTH_LONG).show();
                     }
                 })
                 .setPositiveButton("YES", new DialogInterface.OnClickListener() {
@@ -102,6 +103,13 @@ public class RegisterActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         Intent registerIntent = new Intent(RegisterActivity.this, LoginActivity.class);
                         RegisterActivity.this.startActivity(registerIntent);
+                    }
+                })
+                //for .setCancelable(true)
+                .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+                        Toast.makeText(RegisterActivity.this, "Go to the login form", Toast.LENGTH_LONG).show();
                     }
                 });
         AlertDialog alertDialog = builder.create();
