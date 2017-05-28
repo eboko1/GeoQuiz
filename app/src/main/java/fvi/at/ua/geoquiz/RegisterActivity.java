@@ -89,7 +89,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void showDialog(View v){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("AlertDialog")
+        builder.setTitle("Welcome!!!")
                 .setMessage("Do you want to go to the login form?")
                 .setCancelable(true)
                 .setNegativeButton("NO", new DialogInterface.OnClickListener() {
