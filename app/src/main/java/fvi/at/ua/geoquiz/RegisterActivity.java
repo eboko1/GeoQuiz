@@ -81,10 +81,7 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(RegisterActivity.this, "Data saved!", Toast.LENGTH_SHORT).show();
 
             showDialog(rRegister);
-
         }
-
-
     }
 
     public void showDialog(View v){
