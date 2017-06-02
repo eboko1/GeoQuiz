@@ -17,12 +17,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class RegisterActivity extends AppCompatActivity {
+
     private static final String TAG = "RegisterActivity";
-    private EditText rFirstName;
-    private EditText rLastName;
-    private EditText rPassword;
-    private EditText rEmail;
-    private EditText rLogin;
+
+    private EditText rFirstName,rLastName,rEmail, rLogin, rPassword;
+    private String firstName, lastName, email, login, password;
     private Button rRegister;
 
 
@@ -32,17 +31,80 @@ public class RegisterActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate register class");
         setContentView(R.layout.activity_register);
 
-       init();
+       initFind();
+
         rRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "Register button click");
-                saveInfoUser(rRegister);
+
+                registerSend();
+                //saveInfoUser(rRegister);
             }
         });
 
     }
-    private void init(){
+
+    public void registerSend() {
+        initialize();
+        if (!validate()) {
+            Toast.makeText(this, "SingUp has failed", Toast.LENGTH_SHORT).show();
+        } else {
+            saveInfoUser(rRegister);
+            onSingUpSuccess();
+        }
+    }
+
+     public void onSingUpSuccess() {
+         showDialog(rRegister);
+    }
+
+    public boolean validate() {
+        //todo what will after the valid input
+        boolean valid = true;
+
+        if(firstName.isEmpty() || firstName.length() > 32) {
+            rFirstName.setError("Please enter valid First name");
+            valid = false;
+           // Toast.makeText(this, "Please enter valid NAME", Toast.LENGTH_LONG).show();
+        }
+
+        if(lastName.isEmpty()){
+            rLastName.setError("Please enter valid Last name");
+            valid = false;
+            Toast.makeText(this, "Please enter Last NAME", Toast.LENGTH_LONG).show();
+        }
+
+        if(email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(rEmail.getText().toString()).matches()){
+            rEmail.setError("Please enter valid email");
+            valid = false;
+            // Toast.makeText(this, "Please enter valid EMAIL", Toast.LENGTH_LONG).show();
+        }
+
+        if(login.isEmpty()) {
+            rLogin.setError("Please enter valid login");
+            valid = false;
+            //Toast.makeText(this, "Please enter Login", Toast.LENGTH_LONG).show();
+        }
+
+        if(password.isEmpty()){
+            rPassword.setError("Please enter valid password");
+            valid = false;
+           // Toast.makeText(this, "Please enter PASSWORD", Toast.LENGTH_LONG).show();
+        }
+
+        return valid;
+    }
+
+    public void initialize() {
+        firstName = rFirstName.getText().toString().trim();
+        lastName = rLastName.getText().toString().trim();
+        email = rEmail.getText().toString().trim();
+        login = rLogin.getText().toString().trim();
+        password = rPassword.getText().toString().trim();
+    }
+
+    private void initFind(){
         rFirstName = (EditText)findViewById(R.id.first_name_editText);
         rLastName = (EditText)findViewById(R.id.last_name_editText);
         rPassword = (EditText)findViewById(R.id.password_editText);
@@ -50,7 +112,9 @@ public class RegisterActivity extends AppCompatActivity {
         rLogin = (EditText)findViewById(R.id.login_editText);
 
         rRegister = (Button)findViewById(R.id.send_button);
+
     }
+
 
 
     //Save user login info
@@ -58,32 +122,10 @@ public class RegisterActivity extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences("infoUser", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
 
-
-        if(rFirstName.getText().toString().isEmpty()){
-            Toast.makeText(this, "Please enter NAME", Toast.LENGTH_LONG).show();
-
-        } else if(rLastName.getText().toString().isEmpty()){
-            Toast.makeText(this, "Please enter Last NAME", Toast.LENGTH_LONG).show();
-
-        } else if(rEmail.getText().toString().isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(rEmail.getText().toString()).matches()){
-            Toast.makeText(this, "Please enter valid EMAIL", Toast.LENGTH_LONG).show();
-
-        } else if(rLogin.getText().toString().isEmpty()){
-            Toast.makeText(this, "Please enter Login", Toast.LENGTH_LONG).show();
-
-        } else if(rPassword.getText().toString().isEmpty()){
-            Toast.makeText(this, "Please enter PASSWORD", Toast.LENGTH_LONG).show();
-
-       // } else if (rEmail.getText().toString().contains("@") == false) {
-          //  Toast.makeText(this, "Please enter valid EMAIL", Toast.LENGTH_LONG).show();
-        } else {
             editor.putString("login", rLogin.getText().toString());
             editor.putString("password", rPassword.getText().toString());
             editor.commit();
             Toast.makeText(RegisterActivity.this, "Data saved!", Toast.LENGTH_SHORT).show();
-
-            showDialog(rRegister);
-        }
     }
 
     public void showDialog(View v){

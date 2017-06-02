@@ -53,7 +53,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
-
+    private  void clean(){
+        lPassword.setText("");
+    }
+    public void setLogin(){
+        lName.setText(loadUserLogin());
+    }
     private void init(){
         lName = (EditText)findViewById(R.id.name_editText);
         lPassword = (EditText)findViewById(R.id.password_editText);
@@ -68,15 +73,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private String loadUserLogin(){
         SharedPreferences shpref = getSharedPreferences("infoUser", Context.MODE_PRIVATE);
         String login = shpref.getString(KEY_LOGIN, "");
-        lName.setText(login);
-
         return login;
     }
     //loading data with file infoUser .INI
     private String loadUserPassword(){
         SharedPreferences shpref = getSharedPreferences("infoUser", Context.MODE_PRIVATE);
         String password = shpref.getString(KEY_PASSWORD, "");
-        lPassword.setText(password);
+       // lPassword.setText(password);
         return password;
     }
 
@@ -89,15 +92,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
                 LoginActivity.this.startActivity(registerIntent);
                 break;
+
             case R.id.send_in_button:
-                if(lName.getText().toString().equals(loadUserLogin()) && lPassword.getText().toString().equals(loadUserPassword())){
+
+            if(lName.getText().toString().equals(loadUserLogin()) && lPassword.getText().toString().equals(loadUserPassword())  ){
                     Intent quizIntent = new Intent(LoginActivity.this, QuizActivity.class);
                     LoginActivity.this.startActivity(quizIntent);
-                } else if (lName.getText().toString().isEmpty() || lPassword.getText().toString().isEmpty()){
-                    Toast.makeText(LoginActivity.this,"Please go to Register form",Toast.LENGTH_LONG).show();
 
+                } else if (!(lName.getText().toString().isEmpty()) || lPassword.getText().toString().isEmpty()){
+                     lPassword.setError("enter password");
                 } else {
-                    Toast.makeText(LoginActivity.this,"Please go to Register form",Toast.LENGTH_LONG).show();
+                     Toast.makeText(LoginActivity.this,"Please!!! go to Register form",Toast.LENGTH_LONG).show();
                 }
                 break;
             case R.id.facebookButton:
@@ -121,6 +126,24 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 });
                 break;
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        clean();
+        Log.d(TAG,"onResume() called");
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+
     }
 
     // pass result login callbackManager
