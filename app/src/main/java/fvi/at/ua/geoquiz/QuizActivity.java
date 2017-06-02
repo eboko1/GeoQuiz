@@ -13,6 +13,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
+
 public class QuizActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "QuizActivity";
     private static final String KEY_INDEX = "index";
@@ -70,8 +72,19 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
         wrongTextView.setText(String.valueOf(qWrong));
 
         initSetOnClickListener();
-
+        
+        //if not access go back to LoginActivity
+        if (AccessToken.getCurrentAccessToken() == null){
+            goLoginScreen();
     }
+    }
+
+    private void goLoginScreen() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
     private void initSetOnClickListener(){
         qPrevButton.setOnClickListener(this);
         qNextButton.setOnClickListener(this);

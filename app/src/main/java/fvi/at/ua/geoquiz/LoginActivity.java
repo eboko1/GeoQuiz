@@ -53,12 +53,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
        // initFacebook();
 
     }
-    // pass result login callbackManager
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode, resultCode, data);
-    }
+
 
     private void init(){
         lName = (EditText)findViewById(R.id.name_editText);
@@ -129,11 +124,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    // pass result login callbackManager
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
     @Override
     protected void onDestroy(){
-
         super.onDestroy();
-
-
     }
+
+
 }
