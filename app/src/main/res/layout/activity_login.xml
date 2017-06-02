@@ -84,6 +84,10 @@
         android:gravity="center"
         android:textColor="@color/colorWhite"
         android:textSize="20sp" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/facebookButton"
@@ -91,5 +95,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
         android:layout_marginTop="30dp" />
+
+</LinearLayout>
+
 
 </LinearLayout>

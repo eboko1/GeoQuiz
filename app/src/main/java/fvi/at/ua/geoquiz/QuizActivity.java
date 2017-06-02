@@ -72,10 +72,11 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
         wrongTextView.setText(String.valueOf(qWrong));
 
         initSetOnClickListener();
-        
+
         //if not access go back to LoginActivity
         if (AccessToken.getCurrentAccessToken() == null){
             goLoginScreen();
+            Toast.makeText(this, "Please go to register form", Toast.LENGTH_SHORT).show();
     }
     }
 
