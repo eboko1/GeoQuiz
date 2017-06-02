@@ -82,6 +82,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
        // lPassword.setText(password);
         return password;
     }
+    
 
     @Override
     public void onClick(View v) {
