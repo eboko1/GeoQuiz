@@ -46,6 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void registerSend() {
+        Log.d(TAG, "registerSend");
         initialize();
         if (!validate()) {
             Toast.makeText(this, "SingUp has failed", Toast.LENGTH_SHORT).show();
@@ -56,47 +57,47 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
      public void onSingUpSuccess() {
+         Log.d(TAG, "onSingUpSuccess");
          showDialog(rRegister);
     }
 
     public boolean validate() {
+        Log.d(TAG, "validate");
         //todo what will after the valid input
         boolean valid = true;
-
+        Log.d(TAG, "validate " + valid);
         if(firstName.isEmpty() || firstName.length() > 32) {
-            rFirstName.setError("Please enter valid First name");
+            rFirstName.setError("enter First name");
             valid = false;
            // Toast.makeText(this, "Please enter valid NAME", Toast.LENGTH_LONG).show();
         }
 
         if(lastName.isEmpty()){
-            rLastName.setError("Please enter valid Last name");
+            rLastName.setError("enter Last name");
             valid = false;
-            Toast.makeText(this, "Please enter Last NAME", Toast.LENGTH_LONG).show();
         }
 
         if(email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(rEmail.getText().toString()).matches()){
-            rEmail.setError("Please enter valid email");
+            rEmail.setError("enter email");
             valid = false;
-            // Toast.makeText(this, "Please enter valid EMAIL", Toast.LENGTH_LONG).show();
         }
 
         if(login.isEmpty()) {
-            rLogin.setError("Please enter valid login");
+            rLogin.setError("enter login");
             valid = false;
-            //Toast.makeText(this, "Please enter Login", Toast.LENGTH_LONG).show();
         }
 
         if(password.isEmpty()){
-            rPassword.setError("Please enter valid password");
+            rPassword.setError("enter password");
             valid = false;
-           // Toast.makeText(this, "Please enter PASSWORD", Toast.LENGTH_LONG).show();
+            Log.d(TAG, "validate "+ valid);
         }
 
         return valid;
     }
 
     public void initialize() {
+        Log.d(TAG, "initialize ");
         firstName = rFirstName.getText().toString().trim();
         lastName = rLastName.getText().toString().trim();
         email = rEmail.getText().toString().trim();
@@ -105,6 +106,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void initFind(){
+        Log.d(TAG, "initFind ");
         rFirstName = (EditText)findViewById(R.id.first_name_editText);
         rLastName = (EditText)findViewById(R.id.last_name_editText);
         rPassword = (EditText)findViewById(R.id.password_editText);
@@ -115,8 +117,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-
-
     //Save user login info
     public void saveInfoUser(View v){
         SharedPreferences sharedPref = getSharedPreferences("infoUser", Context.MODE_PRIVATE);
@@ -125,7 +125,12 @@ public class RegisterActivity extends AppCompatActivity {
             editor.putString("login", rLogin.getText().toString());
             editor.putString("password", rPassword.getText().toString());
             editor.commit();
-            Toast.makeText(RegisterActivity.this, "Data saved!", Toast.LENGTH_SHORT).show();
+
+        String loginPref = sharedPref.getString("login", "");
+        String passwordPref = sharedPref.getString("password", "");
+        Log.d(TAG, "loginPref " + loginPref + " " + "passwordPref " + passwordPref);
+
+        Toast.makeText(RegisterActivity.this, "Data saved!", Toast.LENGTH_SHORT).show();
     }
 
     public void showDialog(View v){

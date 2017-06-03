@@ -82,7 +82,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
        // lPassword.setText(password);
         return password;
     }
-    
+
 
     @Override
     public void onClick(View v) {
@@ -92,22 +92,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 Log.d(TAG, "onClick register Here! text view");
                 Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
                 LoginActivity.this.startActivity(registerIntent);
-                break;
+            break;
 
             case R.id.send_in_button:
-
-            if(lName.getText().toString().equals(loadUserLogin()) && lPassword.getText().toString().equals(loadUserPassword())  ){
-                    Intent quizIntent = new Intent(LoginActivity.this, QuizActivity.class);
-                    LoginActivity.this.startActivity(quizIntent);
-
-                } else if (!(lName.getText().toString().isEmpty()) || lPassword.getText().toString().isEmpty()){
-                     lPassword.setError("enter password");
+                if(lName.getText().toString().equals(loadUserLogin()) && lPassword.getText().toString().equals(loadUserPassword())){
+                        Intent quizIntent = new Intent(LoginActivity.this, QuizActivity.class);
+                        LoginActivity.this.startActivity(quizIntent);
+                } else if ((lName.getText().toString().isEmpty()) ) {
+                        lName.setError("enter name");
+                } else if (lPassword.getText().toString().isEmpty()){
+                        lPassword.setError("enter password");
                 } else {
-                     Toast.makeText(LoginActivity.this,"Please!!! go to Register form",Toast.LENGTH_LONG).show();
+                         Toast.makeText(LoginActivity.this,"Please!!! go to Register form",Toast.LENGTH_LONG).show();
                 }
-                break;
-            case R.id.facebookButton:
+            break;
 
+            case R.id.facebookButton:
                 LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
                     @Override
                     public void onSuccess(LoginResult loginResult) {
@@ -125,14 +125,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         Toast.makeText(LoginActivity.this, "ERROR", Toast.LENGTH_SHORT).show();
                     }
                 });
-                break;
+            break;
         }
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-
     }
 
     @Override

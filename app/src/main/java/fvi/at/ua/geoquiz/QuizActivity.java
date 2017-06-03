@@ -74,13 +74,13 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
         initSetOnClickListener();
 
         //if not access go back to LoginActivity
-     /*   if (AccessToken.getCurrentAccessToken() == null ){
+    /*    if (AccessToken.getCurrentAccessToken() == null ){
             goLoginScreen();
             Toast.makeText(this, "Please go to register form", Toast.LENGTH_SHORT).show();
          }*/
     }
 
-  /*  private void goLoginScreen() {
+/*    private void goLoginScreen() {
         Intent intent = new Intent(this, LoginActivity.class);
     //    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
