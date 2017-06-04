@@ -125,7 +125,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         Toast.makeText(LoginActivity.this, "ERROR", Toast.LENGTH_SHORT).show();
                     }
                 });
-            break;
+                break;
         }
     }
 
